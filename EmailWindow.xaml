@@ -1,0 +1,29 @@
+﻿<Window x:Class="SEcoursework.EmailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SEcoursework"
+        mc:Ignorable="d"
+        Title="EmailWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox x:Name="EmailSender_textBox" HorizontalAlignment="Left" Height="23" Margin="104,99,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="261"/>
+        <Label Content="Sender" HorizontalAlignment="Left" Margin="52,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617"/>
+        <TextBox x:Name="EmailSubject_textBox" HorizontalAlignment="Left" Height="23" Margin="106,132,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="261"/>
+        <Label Content="Subject" HorizontalAlignment="Left" Margin="52,130,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.082,0.549"/>
+        <TextBox x:Name="EmailMessage_textBox" HorizontalAlignment="Left" Height="156" Margin="106,163,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="261"/>
+        <Label Content="Message Text" HorizontalAlignment="Left" Margin="19,161,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Incident_checkBox" Content="Significant Incident Report&#xA;" HorizontalAlignment="Left" Margin="106,67,0,0" VerticalAlignment="Top"/>
+        <Canvas Name="IncidentCanvas"  HorizontalAlignment="Left" Height="220" Margin="372,99,0,0" VerticalAlignment="Top" Width="353" Background="Red">
+            <Label Content="Sort Code" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617" Canvas.Left="10" Canvas.Top="26"/>
+            <Label Content="Nature of Incident" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617" Canvas.Left="10" Canvas.Top="57"/>
+
+            <ComboBox ItemsSource="{Binding noi}" x:Name="NatureOfIncident_comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Canvas.Left="125" Canvas.Top="57"/>
+            <TextBox x:Name="EmailSortCode_textBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="218" Canvas.Left="125" Canvas.Top="29"/>
+        </Canvas>
+    </Grid>
+</Window>

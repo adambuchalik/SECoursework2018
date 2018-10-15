@@ -1,0 +1,18 @@
+﻿<Window x:Class="SEcoursework.TwitterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SEcoursework"
+        mc:Ignorable="d"
+        Title="TwitterWindow" Height="450" Width="800">
+    <Grid>
+        <Canvas HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="792" Background="#FF53CFF6"/>
+
+        <TextBox x:Name="TwitterSender_textBox" HorizontalAlignment="Left" Height="23" Margin="158,82,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="261"/>
+        <Label Content="Sender" HorizontalAlignment="Left" Margin="106,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617"/>
+        <TextBox x:Name="TwitterMessage_textBox" HorizontalAlignment="Left" Height="156" Margin="158,115,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="261"/>
+        <Label Content="Message Text" HorizontalAlignment="Left" Margin="71,113,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
