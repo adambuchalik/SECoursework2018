@@ -20,22 +20,37 @@ namespace SEcoursework
     /// </summary>
     public partial class EmailWindow : Window
     {
+        Email email = new Email();
+
         public EmailWindow()
         {
             InitializeComponent();
 
-            Email email = new Email();
+//            Email email = new Email();
             NatureOfIncident_comboBox.ItemsSource = Email.noi;
+            string dupa = Email.noi[3];
 
-            if (Incident_checkBox.IsChecked == false)
-            {
-                
-            }
+            Normal_radioButton.IsChecked = true;
 
 
         }
 
-        
-        
+        private void SendEmail_button_Click(object sender, RoutedEventArgs e)
+        {
+
+            email.Subject = email.GetEmailSubject(EmailSubject_textBox.Text, Incident_radioButton.IsChecked.Value);
+            MessageBox.Show("Subject = " + email.Subject);
+
+        }
+
+        private void Normal_radioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            IncidentCanvas.Visibility = Visibility.Hidden;
+        }
+
+        private void Incident_radioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            IncidentCanvas.Visibility = Visibility.Visible;
+        }
     }
 }
