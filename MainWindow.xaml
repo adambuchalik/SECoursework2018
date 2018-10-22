@@ -9,9 +9,9 @@
     <Grid ToolTip="Select Message ID">
         <ComboBox  x:Name="MessageId_comboBox"
                    HorizontalAlignment="Left" 
-                   Margin="115,56,0,0" 
+                   Margin="217,147,0,0" 
                    VerticalAlignment="Top"
-                   Width="46"
+                   Width="62" Height="35"
                   
                    >
 
@@ -19,8 +19,8 @@
             <ComboBoxItem Content="E" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="T" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
-        <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="23" Margin="166,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Enter 9 digits number"/>
-        <Label Content="Message ID" HorizontalAlignment="Left" Margin="35,56,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="WriteMessage_btn" Content="Write Message" HorizontalAlignment="Left" Margin="291,56,0,0" VerticalAlignment="Top" Width="134" Click="WriteMessage_btn_Click"/>
+        <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="35" Margin="284,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" ToolTip="Enter 9 digits number" FontSize="14"/>
+        <Label Content="Message ID" HorizontalAlignment="Left" Margin="111,147,0,0" VerticalAlignment="Top" Height="35" Width="95" FontSize="14"/>
+        <Button x:Name="WriteMessage_btn" Content="Write Message" HorizontalAlignment="Left" Margin="449,147,0,0" VerticalAlignment="Top" Width="177" Click="WriteMessage_btn_Click" Height="35" FontSize="14" Background="#FF96FD7F"/>
     </Grid>
 </Window>

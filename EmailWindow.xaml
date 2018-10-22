@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="EmailWindow" Height="450" Width="800">
     <Grid>
-      
 
-        <TextBox x:Name="EmailSender_textBox" HorizontalAlignment="Left" Height="23" Margin="104,99,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="261"/>
+
+        <TextBox x:Name="EmailSender_textBox"  HorizontalAlignment="Left" Height="23" Margin="104,99,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="261"/>
         <Label Content="Sender" HorizontalAlignment="Left" Margin="52,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617"/>
         <TextBox x:Name="EmailSubject_textBox" HorizontalAlignment="Left" Height="23" Margin="106,132,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="261"/>
         <Label Content="Subject" HorizontalAlignment="Left" Margin="52,130,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.082,0.549"/>
@@ -20,11 +20,12 @@
             <Label Content="Nature of Incident" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617" Canvas.Left="10" Canvas.Top="57"/>
 
             <ComboBox  x:Name="NatureOfIncident_comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Canvas.Left="125" Canvas.Top="57"/>
-            <TextBox x:Name="EmailSortCode_textBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="218" Canvas.Left="125" Canvas.Top="29"/>
+            <TextBox x:Name="IncidentCode_textBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="218" Canvas.Left="125" Canvas.Top="29"/>
         </Canvas>
         <Button x:Name="SendEmail_button" Content="Send Email" HorizontalAlignment="Left" Margin="104,334,0,0" VerticalAlignment="Top" Width="75" Click="SendEmail_button_Click"/>
         <RadioButton x:Name="Normal_radioButton" Content="Normal" HorizontalAlignment="Left" Margin="270,356,0,0" VerticalAlignment="Top" Checked="Normal_radioButton_Checked"/>
         <RadioButton x:Name="Incident_radioButton" Content="Incident" HorizontalAlignment="Left" Margin="270,372,0,0" VerticalAlignment="Top" Checked="Incident_radioButton_Checked"/>
         <StackPanel HorizontalAlignment="Left" Height="41" Margin="263,356,0,0" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="23" Margin="106,56,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

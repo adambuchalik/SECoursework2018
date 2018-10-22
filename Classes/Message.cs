@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SEcoursework.Classes
 {
@@ -13,33 +14,55 @@ namespace SEcoursework.Classes
         public string Subject { get; set; }
         public string MessageText { get; set; }
         public string MessageId { get; set; }
-        public string AbbreviationText { get; set; }
-        public string SanitizedURL { get; set; }
-        public string Hashtag { get; set; }
 
-        public static void ReplaceUrl(string data)
+        public bool IsIncident { get; set; }
+
+        // array for incident type comboBox
+        public static string[] natureOfIncidentArr =
         {
-            string dupa = data;
+            "Theft", "Staff Attack", "ATM Theft", "Raid", "Customer Attack", "Staff Abuse", "Bomb Threat", "Terrorism",
+            "Suspicious Incident", "Intelligence", "Cash Loss"
+        };
 
+
+        private readonly List<string> _urlQuarantineList = new List<string>();
+
+        public IEnumerable<string> Content
+        {
+            get { return _urlQuarantineList; }
+        }
+
+        public void AddUrlToList(string s)
+        {
+            _urlQuarantineList.Add(s);
+        }
+
+        #region ReplaceUrl + setting MessageText
+        // Sets at the same time value for MessageText property
+        public void ReplaceUrl(string messageId_tbx)
+        {
             //instantiate with this pattern 
             Regex emailRegex = new Regex(@"(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})",
                 RegexOptions.IgnoreCase);
             //find items that matches with our pattern
-            MatchCollection emailMatches = emailRegex.Matches(data);
+            MatchCollection emailMatches = emailRegex.Matches(messageId_tbx);
 
-            List<string> listOfEmails = new List<string>();
+//            List<string> urlQuarantineList = new List<string>();
 
             foreach (Match emailMatch in emailMatches)
             {
-                listOfEmails.Add(emailMatch.Value);
-                dupa = dupa.Replace(emailMatch.Value, " < URL Quarantinened>");
+                AddUrlToList(emailMatch.Value);
+                messageId_tbx = messageId_tbx.Replace(emailMatch.Value, " < URL Quarantinened>");
             }
 
-            Console.WriteLine("nowa dupa is: " + dupa);
+            MessageText = messageId_tbx;
         }
+        #endregion
+        
+        #region ReplaceAbbreviations
 
-
-        public static string ReplaceAbbreviation(string messageText)
+        // Changed MessageText property must be passed in that method
+        public void ReplaceAbbreviation(string messageId_tbx)
         {
             IDictionary<string, string> dict = new Dictionary<string, string>()
             {
@@ -300,23 +323,79 @@ namespace SEcoursework.Classes
                 {"TNSTAAFL", "<There's no such thing as a free lunch>"}
             };
 
-
             foreach (KeyValuePair<string, string> item in dict)
             {
                 //instantiate with this pattern 
-                Regex emailRegex = new Regex(item.Key, RegexOptions.IgnorePatternWhitespace);
+                Regex urlRegex = new Regex(item.Key, RegexOptions.IgnorePatternWhitespace);
                 //find items that matches with our pattern
-                MatchCollection emailMatches = emailRegex.Matches($"+{messageText}+");
+                MatchCollection urlMatches = urlRegex.Matches($"+{messageId_tbx}+");
 
 
-                foreach (Match emailMatch in emailMatches)
+                foreach (Match urlMatch in urlMatches)
                 {
-                    messageText = messageText.Replace(emailMatch.Value, item.Value);
+                    messageId_tbx = messageId_tbx.Replace(urlMatch.Value, item.Value);
                 }
             }
 
-
-            return messageText;
+            MessageText = messageId_tbx;
         }
+
+        #endregion
+
+//        #region SetEmailSubject
+//        // Set subject
+//        public void SetEmailSubject(string emailSubject_tbx, bool incident_radioValue)
+//        {
+//            if (incident_radioValue)
+//            {
+//                Subject = $"SIR {DateTime.Today.ToString("dd/MM/yy")}";
+//                IsIncident = true;
+//            }
+//            else
+//            {
+//                Subject = emailSubject_tbx;
+//                IsIncident = false;
+//            }
+//
+//        }
+//        #endregion
+
+//        #region Create message
+//        // creates message after stripping URL. combo and incident code validated in window
+//        public void CreateMessage(string MessageText, bool iSincident_radioValue, string incidentCode_tbx,
+//            string natureOfIncident_cbx)
+//        {
+//            if (iSincident_radioValue)
+//            {
+//                this.MessageText = incidentCode_tbx + "\n" + natureOfIncident_cbx + "\n" + this.MessageText;
+//                MessageBox.Show(this.MessageText);
+//
+//            }
+//            else
+//            {
+//                this.MessageText = this.MessageText;
+//                MessageBox.Show(this.MessageText);
+//            }
+//        }
+//        #endregion
+
+       
+
+//        public Message()
+//        {
+//        }
+//
+//        public Message(string messageId_tbx, string emailSender_tbx, string emailSubject_tbx, string emailMessage_tbx,
+//            string incidentCnv, string incidentCode_tbx, string natureOfIncident_cbx, bool iSincident_radioValue)
+//        {
+//            //1. ReplaceUrl(messageId_tbx)
+//            //2. CreateMessage(MessageText, iSincident_radioValue, incidentCode_tbx, natureOfIncident_cbx);
+//
+//
+//        }
+
+
+
     }
 }
+   
