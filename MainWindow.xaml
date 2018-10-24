@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SEcoursework"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="600">
     <Grid ToolTip="Select Message ID">
         <ComboBox  x:Name="MessageId_comboBox"
                    HorizontalAlignment="Left" 
-                   Margin="217,147,0,0" 
+                   Margin="175,347,0,0" 
                    VerticalAlignment="Top"
-                   Width="62" Height="35"
+                   Width="62" Height="35" FontSize="18"
                   
                    >
 
@@ -19,8 +19,11 @@
             <ComboBoxItem Content="E" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="T" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
-        <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="35" Margin="284,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" ToolTip="Enter 9 digits number" FontSize="14"/>
-        <Label Content="Message ID" HorizontalAlignment="Left" Margin="111,147,0,0" VerticalAlignment="Top" Height="35" Width="95" FontSize="14"/>
-        <Button x:Name="WriteMessage_btn" Content="Write Message" HorizontalAlignment="Left" Margin="449,147,0,0" VerticalAlignment="Top" Width="177" Click="WriteMessage_btn_Click" Height="35" FontSize="14" Background="#FF96FD7F"/>
+        <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="35" Margin="242,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103" ToolTip="Enter 9 digits number" FontSize="18"/>
+        <Label Content="Message ID" HorizontalAlignment="Left" Margin="69,347,0,0" VerticalAlignment="Top" Height="35" Width="95" FontSize="16"/>
+        <Button x:Name="WriteMessage_btn" Content="Write Message" HorizontalAlignment="Left" Margin="350,347,0,0" VerticalAlignment="Top" Width="177" Click="WriteMessage_btn_Click" Height="35" FontSize="14" Background="#FFD11441" Foreground="White"/>
+
+        <Label Content="Message Filtering Service" HorizontalAlignment="Left" Margin="169,224,0,0" VerticalAlignment="Top" FontSize="24"/>
+        <Image Margin="180,72,156,267" Source="napierBankLogo.png"/>
     </Grid>
 </Window>

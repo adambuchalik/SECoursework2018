@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using Newtonsoft.Json;
 
 namespace SEcoursework.Classes
 {
@@ -28,9 +25,8 @@ namespace SEcoursework.Classes
         };
 
 
-        public List<string> _urlQuarantineList = new List<string>();
+        private readonly List<string> _urlQuarantineList = new List<string>();
 
-        [JsonIgnore]
         public IEnumerable<string> Content
         {
             get { return _urlQuarantineList; }
@@ -42,33 +38,31 @@ namespace SEcoursework.Classes
         }
 
         #region ReplaceUrl + setting MessageText
-
         // Sets at the same time value for MessageText property
-        public void ReplaceUrl(string emailMessage_tbx)
+        public void ReplaceUrl(string messageId_tbx)
         {
             //instantiate with this pattern 
             Regex emailRegex = new Regex(@"(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})",
                 RegexOptions.IgnoreCase);
             //find items that matches with our pattern
-            MatchCollection emailMatches = emailRegex.Matches(emailMessage_tbx);
+            MatchCollection emailMatches = emailRegex.Matches(messageId_tbx);
 
 //            List<string> urlQuarantineList = new List<string>();
 
             foreach (Match emailMatch in emailMatches)
             {
                 AddUrlToList(emailMatch.Value);
-                emailMessage_tbx = emailMessage_tbx.Replace(emailMatch.Value, " < URL Quarantinened>");
+                messageId_tbx = messageId_tbx.Replace(emailMatch.Value, " < URL Quarantinened>");
             }
 
-            MessageText = emailMessage_tbx;
+            MessageText = messageId_tbx;
         }
-
         #endregion
-
+        
         #region ReplaceAbbreviations
 
         // Changed MessageText property must be passed in that method
-        public void ReplaceAbbreviation(string emailMessage_tbx)
+        public void ReplaceAbbreviation(string messageId_tbx)
         {
             IDictionary<string, string> dict = new Dictionary<string, string>()
             {
@@ -334,155 +328,74 @@ namespace SEcoursework.Classes
                 //instantiate with this pattern 
                 Regex urlRegex = new Regex(item.Key, RegexOptions.IgnorePatternWhitespace);
                 //find items that matches with our pattern
-                MatchCollection urlMatches = urlRegex.Matches($"+{emailMessage_tbx}+");
+                MatchCollection urlMatches = urlRegex.Matches($"+{messageId_tbx}+");
 
 
                 foreach (Match urlMatch in urlMatches)
                 {
-                    emailMessage_tbx = emailMessage_tbx.Replace(urlMatch.Value, item.Value);
+                    messageId_tbx = messageId_tbx.Replace(urlMatch.Value, item.Value);
                 }
             }
 
-            MessageText = emailMessage_tbx;
+            MessageText = messageId_tbx;
         }
 
         #endregion
 
-        #region SetEmailSubject
+//        #region SetEmailSubject
+//        // Set subject
+//        public void SetEmailSubject(string emailSubject_tbx, bool incident_radioValue)
+//        {
+//            if (incident_radioValue)
+//            {
+//                Subject = $"SIR {DateTime.Today.ToString("dd/MM/yy")}";
+//                IsIncident = true;
+//            }
+//            else
+//            {
+//                Subject = emailSubject_tbx;
+//                IsIncident = false;
+//            }
+//
+//        }
+//        #endregion
 
-        // Set subject
-        public void SetEmailSubject(string emailSubject_tbx, bool incident_radioValue)
-        {
-            // Validate subject
-            if (emailSubject_tbx.Length > 20)
-            {
-                MessageBox.Show("Subject cannot be longer than 20 characters");
-                return;
-            }
+//        #region Create message
+//        // creates message after stripping URL. combo and incident code validated in window
+//        public void CreateMessage(string MessageText, bool iSincident_radioValue, string incidentCode_tbx,
+//            string natureOfIncident_cbx)
+//        {
+//            if (iSincident_radioValue)
+//            {
+//                this.MessageText = incidentCode_tbx + "\n" + natureOfIncident_cbx + "\n" + this.MessageText;
+//                MessageBox.Show(this.MessageText);
+//
+//            }
+//            else
+//            {
+//                this.MessageText = this.MessageText;
+//                MessageBox.Show(this.MessageText);
+//            }
+//        }
+//        #endregion
 
+       
 
-            if (incident_radioValue)
-            {
-                Subject = $"SIR {DateTime.Today.ToString("dd/MM/yy")}";
-                IsIncident = true;
-            }
-            else
-            {
-                Subject = emailSubject_tbx;
-                IsIncident = false;
-            }
-        }
-
-        #endregion
-
-
-        #region Validate IncidentCode and IncidentType_comboBox
-
-        public void ValidateIncidentTxb_cbx(bool iSincident_radioValue, string incidentCode_tbx,
-            string natureOfIncident_cbx)
-        {
-            // initial validation of incidentCode and incidentType combo
-            if (iSincident_radioValue == true)
-            {
-
-                if (incidentCode_tbx == "" || natureOfIncident_cbx == "")
-                {
-                    MessageBox.Show("Enter incident code and select incident type");
-                    return;
-                }
-            }
-        }
-
-        #endregion
-
-        #region Create message
-
-        // creates message after stripping URL. combo and incident code validated in window
-        public void CreateMessage(string MessageText, bool incident_radioValue, string incidentCode_tbx,
-            string natureOfIncident_cbx)
-        {
-            if (MessageText.Length > 1028)
-            {
-                MessageBox.Show("Message cannot be longer than 1028 characters");
-                return;
-            }
+//        public Message()
+//        {
+//        }
+//
+//        public Message(string messageId_tbx, string emailSender_tbx, string emailSubject_tbx, string emailMessage_tbx,
+//            string incidentCnv, string incidentCode_tbx, string natureOfIncident_cbx, bool iSincident_radioValue)
+//        {
+//            //1. ReplaceUrl(messageId_tbx)
+//            //2. CreateMessage(MessageText, iSincident_radioValue, incidentCode_tbx, natureOfIncident_cbx);
+//
+//
+//        }
 
 
-            if (incident_radioValue)
-            {
-                this.MessageText = incidentCode_tbx + "\n" + natureOfIncident_cbx + "\n" + this.MessageText;
-                MessageBox.Show(this.MessageText);
-            }
-            else
-            {
-                this.MessageText = this.MessageText;
-                MessageBox.Show(this.MessageText);
-            }
-        }
 
-        #endregion
-
-
-        public void SetSender(string emailSender_tbx)
-        {
-            Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$",
-                RegexOptions.IgnoreCase);
-            Match emailMatch = emailRegex.Match(emailSender_tbx);
-            if (emailMatch.Success)
-            {
-                Sender = emailMatch.ToString();
-            }
-            else
-            {
-                MessageBox.Show("Email address incorrect");
-                return;
-            }
-        }
-
-        /// <summary>
-        /// Writes to json file. 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="objectToWrite">The object to write.</param>
-        /// <param name="fileName">Name of the file. Fixed output path: <Project folder></Project>\bin\Debug</param>
-        /// <param name="append">if set to <c>true</c> [append].</param>
-        public void WriteToJsonFile<T>(T objectToWrite, string fileName, bool append = false) where T : new()
-        {
-            string filePath = Directory.GetCurrentDirectory() + "\\" + fileName + ".json" ;
-            TextWriter writer = null;
-            try
-            {   
-                var contentsToWriteToFile = JsonConvert.SerializeObject(objectToWrite);
-                writer = new StreamWriter(filePath, append);
-                writer.Write(contentsToWriteToFile);
-            }
-            finally
-            {
-                if (writer != null)
-                    writer.Close();
-            }
-        }
-
-
-        public static T ReadFromJsonFile<T>(string filePath) where T : new()
-        {
-            TextReader reader = null;
-            try
-            {
-                reader = new StreamReader(filePath);
-                var fileContents = reader.ReadToEnd();
-                return JsonConvert.DeserializeObject<T>(fileContents);
-            }
-            finally
-            {
-                if (reader != null)
-                    reader.Close();
-            }
-        }
-
-
-        public Message()
-        {
-        }
     }
 }
+   

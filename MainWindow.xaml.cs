@@ -39,43 +39,13 @@ namespace SEcoursework
             string messageId = MessageId.ValidateMessageId(MessageId_comboBox.Text, MessageId_textBox.Text);
             Console.WriteLine(messageId);
 
-//            var messageIdPrefix = MessageId_comboBox.Text;
-//            int messageId = 0;
-//
-//            if (int.TryParse(MessageId_textBox.Text, out messageId))
-//            {
-//                if (messageIdPrefix == String.Empty || MessageId_textBox.Text.Length != 9)
-//                {
-//                    MessageBox.Show("Select Message Id type and type 9-digit number", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
-//                }
-//                else
-//                {
-//                    switch (messageIdPrefix)
-//                    {
-//                        case "S":
-//                            SMSWindow smsWindow = new SMSWindow();
-//                            smsWindow.ShowDialog();
-//                            break;
-//                        case "E":
-//                            EmailWindow emailWindow = new EmailWindow();
-//                            emailWindow.ShowDialog();
-//                            break;
-//                        case "T":
-//                            TwitterWindow twitterWindow = new TwitterWindow();
-//                            twitterWindow.ShowDialog();
-//                            break;
-//                    }
-//                }
-//            }
-//            else
-//            {
-//                MessageBox.Show("MessageId needs to be 9-digit number", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
-//            }
+
 
             var abbreviation = "AAP";
             var extractedAbbreviation = "";
 
-            #region massive switch
+            
+            #region Array containing abbreviations
 
             switch (abbreviation)
             {
