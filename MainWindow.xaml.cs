@@ -21,13 +21,22 @@ namespace SEcoursework
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string messageIdPrefix = "";
-        private string mesageIdNumber = "";
+
         
+
+        private string messageIdPrefix = "";
+        private string messageIdNumber = "";
+        
+        
+       
 
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); Random rnd = new Random();
+
+            int myRandomNo = rnd.Next(100000000, 999999999);
+            
+            MessageId_textBox.Text = myRandomNo.ToString();
 
         }
 
@@ -38,7 +47,7 @@ namespace SEcoursework
 
             string messageId = MessageId.ValidateMessageId(MessageId_comboBox.Text, MessageId_textBox.Text);
             Console.WriteLine(messageId);
-
+            
 
 
             var abbreviation = "AAP";

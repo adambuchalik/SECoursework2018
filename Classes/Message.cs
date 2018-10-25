@@ -463,7 +463,7 @@ namespace SEcoursework.Classes
             }
         }
 
-
+      
         public static T ReadFromJsonFile<T>(string filePath) where T : new()
         {
             TextReader reader = null;
@@ -479,6 +479,8 @@ namespace SEcoursework.Classes
                     reader.Close();
             }
         }
+
+
 
 
         public Message()
