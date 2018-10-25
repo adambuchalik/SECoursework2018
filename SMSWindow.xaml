@@ -5,13 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SEcoursework"
         mc:Ignorable="d"
-        Title="SMSWindow" Height="450" Width="800">
+        Title="SMSWindow" Height="450" Width="355">
     <Grid>
-        <Canvas HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="792" Background="#FFFFD8D8"/>
-        <TextBox x:Name="SMSSender_textBox" HorizontalAlignment="Left" Height="23" Margin="204,132,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="SMSMessage_textBox" HorizontalAlignment="Left" Height="137" Margin="204,185,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Sender" HorizontalAlignment="Left" Margin="149,130,0,0" VerticalAlignment="Top" Width="50"/>
-        <Label Content="Message Text" HorizontalAlignment="Left" Margin="118,183,0,0" VerticalAlignment="Top" Width="81"/>
+
+        <Image Margin="164,10,21,359" Source="napierBankLogo.png"/>
+        <TextBox x:Name="SMSSender_textBox" HorizontalAlignment="Left" Height="23" Margin="108,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
+        <TextBox x:Name="SMSMessage_textBox" HorizontalAlignment="Left" Height="137" Margin="108,190,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
+        <Label Content="Sender" HorizontalAlignment="Left" Margin="53,135,0,0" VerticalAlignment="Top" Width="50"/>
+        <Label Content="Message Text" HorizontalAlignment="Left" Margin="22,188,0,0" VerticalAlignment="Top" Width="81"/>
+        <Label Content="SMS" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="81" FontSize="30 px" FontWeight="Bold"/>
+        <Button Content="Send SMS" HorizontalAlignment="Left" Margin="217,352,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF898989" Offset="1"/>
+                    <GradientStop Color="White"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox Name="MessageId_textBox" HorizontalAlignment="Left" Height="23" Margin="108,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Canvas x:Name="CanvasEnd" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="327" Background="Black">
+            <ListBox x:Name="Abbrieviations_listBox" Height="100" Canvas.Left="88" Canvas.Top="53" Width="151"/>
+            <TextBlock Canvas.Left="20" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="205" Height="122" Width="278"/>
+            <Button Content="Button" Canvas.Left="118" Canvas.Top="345" Width="100" FontSize="14" Height="27">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF898989" Offset="1"/>
+                        <GradientStop Color="White"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Label Content="Following message has been sent" Canvas.Left="34" Canvas.Top="169" Foreground="#FF00FF68" FontSize="16"/>
+        </Canvas>
 
 
     </Grid>

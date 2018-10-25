@@ -25,8 +25,8 @@ namespace SEcoursework.Classes
                     {
                         case "S":
                             SMSWindow smsWindow = new SMSWindow();
-                            
-//                            smsWindow.ShowDialog();
+                            smsWindow.MessageId_textBox.Text = messageIdPref + messageIdNumber.ToString();
+                            smsWindow.ShowDialog();
                             break;
                         case "E":
                             EmailWindow emailWindow = new EmailWindow();

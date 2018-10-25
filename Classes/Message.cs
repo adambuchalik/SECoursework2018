@@ -28,17 +28,17 @@ namespace SEcoursework.Classes
         };
 
 
-        public List<string> _urlQuarantineList = new List<string>();
+        public List<string> UrlQuarantineList = new List<string>();
 
         [JsonIgnore]
         public IEnumerable<string> Content
         {
-            get { return _urlQuarantineList; }
+            get { return UrlQuarantineList; }
         }
 
         public void AddUrlToList(string s)
         {
-            _urlQuarantineList.Add(s);
+            UrlQuarantineList.Add(s);
         }
 
         #region ReplaceUrl + setting MessageText

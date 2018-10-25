@@ -42,7 +42,7 @@ namespace SEcoursework.Classes
             SetSender(emailSender_tbx);
             ReplaceUrl(emailMessage_tbx);
             CreateMessage(MessageText, incident_radioValue, incidentCode_tbx, natureOfIncident_cbx);
-            WriteToJsonFile(this, "emalja");
+            WriteToJsonFile(this, "email");
            
         }
     }

@@ -39,6 +39,9 @@ namespace SEcoursework
             //ComboBox source 
             NatureOfIncident_comboBox.ItemsSource = Email.natureOfIncidentArr;
 
+            
+
+
             //Initial RadioButton status
             Normal_radioButton.IsChecked = true;
 
@@ -54,7 +57,7 @@ namespace SEcoursework
             email = new Email(MessageId_textBox.Text, EmailSender_textBox.Text, EmailSubject_textBox.Text, EmailMessage_textBox.Text, IncidentCode_textBox.Text, NatureOfIncident_comboBox.Text, Incident_radioButton.IsChecked.Value);
             // final message put on canvas
             CanvasEnd_textBlock.Text = email.MessageText;
-            
+            urls_listbox.ItemsSource = email.UrlQuarantineList;
         }
 
         private void Normal_radioButton_Checked(object sender, RoutedEventArgs e)
