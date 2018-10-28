@@ -37,7 +37,6 @@ namespace SEcoursework.Classes
         : base()
         {
             MessageId = messageId_tbx;
-            ValidateIncidentTxb_cbx(incident_radioValue, incidentCode_tbx, natureOfIncident_cbx);
             SetEmailSubject( emailSubject_tbx, incident_radioValue);
             SetSender(emailSender_tbx);
             ReplaceUrl(emailMessage_tbx);

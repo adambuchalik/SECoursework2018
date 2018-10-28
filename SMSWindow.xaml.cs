@@ -29,8 +29,27 @@ namespace SEcoursework
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CanvasEnd.Visibility = Visibility.Visible;
+            if (MessageId_textBox.Text.Length > 160)
+            {
+                MessageBox.Show("SMS cannot be longer than 160 characters");
+                return;
+            }
+            else
+            {
+                CanvasEnd.Visibility = Visibility.Visible;
             sms = new Sms(MessageId_textBox.Text, SMSSender_textBox.Text, SMSMessage_textBox.Text);
+            //            Abbrieviations_listBox.ItemsSource = 
+            CanvasEnd_textBlock.Text = sms.MessageText;
+
+           
+                Abbrieviations_listBox.ItemsSource = sms.AbbreviationList;
+            }
+            
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

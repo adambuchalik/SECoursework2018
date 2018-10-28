@@ -31,7 +31,7 @@ namespace SEcoursework.Classes
         public List<string> UrlQuarantineList = new List<string>();
 
         [JsonIgnore]
-        public IEnumerable<string> Content
+        public IEnumerable<string> UrlsContent
         {
             get { return UrlQuarantineList; }
         }
@@ -39,6 +39,22 @@ namespace SEcoursework.Classes
         public void AddUrlToList(string s)
         {
             UrlQuarantineList.Add(s);
+        }
+
+
+
+
+        public List<string> AbbreviationList = new List<string>();
+
+        [JsonIgnore]
+        public IEnumerable<string> AbreviationsContent
+        {
+            get { return AbbreviationList; }
+        }
+
+        public void AddAbbreviationToList(string s)
+        {
+            AbbreviationList.Add(s);
         }
 
         #region ReplaceUrl + setting MessageText
@@ -68,8 +84,10 @@ namespace SEcoursework.Classes
         #region ReplaceAbbreviations
 
         // Changed MessageText property must be passed in that method
-        public void ReplaceAbbreviation(string emailMessage_tbx)
+        public void ReplaceAbbreviation(string smsMessage_tbx)
         {
+            int x = 1;
+
             IDictionary<string, string> dict = new Dictionary<string, string>()
             {
                 {"AT", "<At your terminal>"},
@@ -329,21 +347,24 @@ namespace SEcoursework.Classes
                 {"TNSTAAFL", "<There's no such thing as a free lunch>"}
             };
 
+
             foreach (KeyValuePair<string, string> item in dict)
             {
+               
                 //instantiate with this pattern 
                 Regex urlRegex = new Regex(item.Key, RegexOptions.IgnorePatternWhitespace);
                 //find items that matches with our pattern
-                MatchCollection urlMatches = urlRegex.Matches($"+{emailMessage_tbx}+");
+                MatchCollection urlMatches = urlRegex.Matches($"+{smsMessage_tbx}+");
 
 
                 foreach (Match urlMatch in urlMatches)
                 {
-                    emailMessage_tbx = emailMessage_tbx.Replace(urlMatch.Value, item.Value);
+                    smsMessage_tbx = item.Key + " " + smsMessage_tbx.Replace(urlMatch.Value, item.Value);
+                    AddAbbreviationToList(x++ + ". " + item.Key);
                 }
             }
 
-            MessageText = emailMessage_tbx;
+            MessageText = smsMessage_tbx;
         }
 
         #endregion
@@ -354,13 +375,6 @@ namespace SEcoursework.Classes
         public void SetEmailSubject(string emailSubject_tbx, bool incident_radioValue)
         {
             // Validate subject
-            if (emailSubject_tbx.Length > 20)
-            {
-                MessageBox.Show("Subject cannot be longer than 20 characters");
-                return;
-            }
-
-
             if (incident_radioValue)
             {
                 Subject = $"SIR {DateTime.Today.ToString("dd/MM/yy")}";
@@ -384,7 +398,6 @@ namespace SEcoursework.Classes
             // initial validation of incidentCode and incidentType combo
             if (iSincident_radioValue == true)
             {
-
                 if (incidentCode_tbx == "" || natureOfIncident_cbx == "")
                 {
                     MessageBox.Show("Enter incident code and select incident type");
@@ -448,10 +461,10 @@ namespace SEcoursework.Classes
         /// <param name="append">if set to <c>true</c> [append].</param>
         public void WriteToJsonFile<T>(T objectToWrite, string fileName, bool append = false) where T : new()
         {
-            string filePath = Directory.GetCurrentDirectory() + "\\" + fileName + ".json" ;
+            string filePath = Directory.GetCurrentDirectory() + "\\" + fileName + ".json";
             TextWriter writer = null;
             try
-            {   
+            {
                 var contentsToWriteToFile = JsonConvert.SerializeObject(objectToWrite);
                 writer = new StreamWriter(filePath, append);
                 writer.Write(contentsToWriteToFile);
@@ -463,7 +476,7 @@ namespace SEcoursework.Classes
             }
         }
 
-      
+
         public static T ReadFromJsonFile<T>(string filePath) where T : new()
         {
             TextReader reader = null;
@@ -479,8 +492,6 @@ namespace SEcoursework.Classes
                     reader.Close();
             }
         }
-
-
 
 
         public Message()
