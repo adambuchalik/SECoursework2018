@@ -57,23 +57,38 @@ namespace SEcoursework.Classes
             AbbreviationList.Add(s);
         }
 
+
+
+        public List<string> HashtagList = new List<string>();
+
+        [JsonIgnore]
+        public IEnumerable<string> HashtagContent
+        {
+            get { return HashtagList; }
+        }
+
+        public void AddHashtagToList(string s)
+        {
+            HashtagList.Add(s);
+        }
+
         #region ReplaceUrl + setting MessageText
 
         // Sets at the same time value for MessageText property
         public void ReplaceUrl(string emailMessage_tbx)
         {
             //instantiate with this pattern 
-            Regex emailRegex = new Regex(@"(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})",
+            Regex urlRegex = new Regex(@"(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})",
                 RegexOptions.IgnoreCase);
             //find items that matches with our pattern
-            MatchCollection emailMatches = emailRegex.Matches(emailMessage_tbx);
+            MatchCollection emailMatches = urlRegex.Matches(emailMessage_tbx);
 
 //            List<string> urlQuarantineList = new List<string>();
 
-            foreach (Match emailMatch in emailMatches)
+            foreach (Match urlMatch in emailMatches)
             {
-                AddUrlToList(emailMatch.Value);
-                emailMessage_tbx = emailMessage_tbx.Replace(emailMatch.Value, " < URL Quarantinened>");
+                AddUrlToList(urlMatch.Value);
+                emailMessage_tbx = emailMessage_tbx.Replace(urlMatch.Value, " < URL Quarantinened>");
             }
 
             MessageText = emailMessage_tbx;
@@ -81,10 +96,30 @@ namespace SEcoursework.Classes
 
         #endregion
 
+        #region CollectHashTags + setting MessageText
+
+        // Sets at the same time value for MessageText property
+        public void CollectHashtag(string twitterMessage_tbx)
+        {
+            //instantiate with this pattern 
+            Regex urlRegex = new Regex(@"(?<![^#]\w+\s+)(#\w+)",
+                RegexOptions.IgnoreCase);
+            //find items that matches with our pattern
+            MatchCollection hashMatches = urlRegex.Matches(twitterMessage_tbx);
+
+            foreach (Match hashMatch in hashMatches)
+            {
+                AddHashtagToList(hashMatch.Value);
+            }
+            
+        }
+
+        #endregion
+
         #region ReplaceAbbreviations
 
         // Changed MessageText property must be passed in that method
-        public void ReplaceAbbreviation(string smsMessage_tbx)
+        public void ReplaceAbbreviation(string message_tbx)
         {
             int x = 1;
 
@@ -354,17 +389,17 @@ namespace SEcoursework.Classes
                 //instantiate with this pattern 
                 Regex urlRegex = new Regex(item.Key, RegexOptions.IgnorePatternWhitespace);
                 //find items that matches with our pattern
-                MatchCollection urlMatches = urlRegex.Matches($"+{smsMessage_tbx}+");
+                MatchCollection urlMatches = urlRegex.Matches($"+{message_tbx}+");
 
 
                 foreach (Match urlMatch in urlMatches)
                 {
-                    smsMessage_tbx = item.Key + " " + smsMessage_tbx.Replace(urlMatch.Value, item.Value);
+                    message_tbx = item.Key + " " + message_tbx.Replace(urlMatch.Value, item.Value);
                     AddAbbreviationToList(x++ + ". " + item.Key);
                 }
             }
 
-            MessageText = smsMessage_tbx;
+            MessageText = message_tbx;
         }
 
         #endregion

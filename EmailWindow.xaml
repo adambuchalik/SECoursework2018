@@ -8,26 +8,33 @@
         Title="EmailWindow" Height="450" Width="800">
     <Grid>
 
-
-        <TextBox x:Name="EmailSender_textBox"  HorizontalAlignment="Left" Height="23" Margin="104,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261"/>
-        <Label Content="Sender" HorizontalAlignment="Left" Margin="52,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617"/>
-        <TextBox x:Name="EmailSubject_textBox" HorizontalAlignment="Left" Height="23" Margin="106,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261"/>
-        <Label Content="Subject" HorizontalAlignment="Left" Margin="52,130,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.082,0.549"/>
-        <TextBox x:Name="EmailMessage_textBox" HorizontalAlignment="Left" Height="156" Margin="106,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261"/>
-        <Label Content="Message Text" HorizontalAlignment="Left" Margin="19,161,0,0" VerticalAlignment="Top"/>
-        <Canvas Name="IncidentCanvas"  HorizontalAlignment="Left" Height="220" Margin="372,99,0,0" VerticalAlignment="Top" Width="353" Background="Red">
+        <Image Margin="559,10,64,359" Source="napierBankLogo.png" />
+        <TextBox x:Name="EmailSender_textBox"  HorizontalAlignment="Left" Height="23" Margin="107,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261"/>
+        <Label Content="Sender" HorizontalAlignment="Left" Margin="55,139,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617"/>
+        <TextBox x:Name="EmailSubject_textBox" HorizontalAlignment="Left" Height="23" Margin="109,172,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261"/>
+        <Label Content="Subject" HorizontalAlignment="Left" Margin="55,170,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.082,0.549"/>
+        <TextBox x:Name="EmailMessage_textBox" HorizontalAlignment="Left" Height="156" Margin="109,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261"/>
+        <Label Content="Message Text" HorizontalAlignment="Left" Margin="22,201,0,0" VerticalAlignment="Top"/>
+        <Canvas Name="IncidentCanvas"  HorizontalAlignment="Left" Height="105" Margin="375,139,0,0" VerticalAlignment="Top" Width="353" Background="Red">
             <Label Content="Sort Code" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617" Canvas.Left="10" Canvas.Top="26" Foreground="White"/>
             <Label Content="Nature of Incident" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617" Canvas.Left="10" Canvas.Top="57" Foreground="White"/>
 
             <ComboBox  x:Name="NatureOfIncident_comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Canvas.Left="125" Canvas.Top="57"/>
             <TextBox x:Name="IncidentCode_textBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="218" Canvas.Left="125" Canvas.Top="29"/>
         </Canvas>
-        <Button x:Name="SendEmail_button" Content="Send Email" HorizontalAlignment="Left" Margin="104,334,0,0" VerticalAlignment="Top" Width="75" Click="SendEmail_button_Click"/>
-        <RadioButton x:Name="Normal_radioButton" Content="Normal" HorizontalAlignment="Left" Margin="270,356,0,0" VerticalAlignment="Top" Checked="Normal_radioButton_Checked"/>
-        <RadioButton x:Name="Incident_radioButton" Content="Incident" HorizontalAlignment="Left" Margin="270,372,0,0" VerticalAlignment="Top" Checked="Incident_radioButton_Checked"/>
-        <StackPanel HorizontalAlignment="Left" Height="41" Margin="263,356,0,0" VerticalAlignment="Top" Width="152"/>
-        <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="23" Margin="106,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Canvas x:Name="CanvasEnd" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" Background="Black" Opacity="0.9">
+        <Button x:Name="SendEmail_button" Content="Send Email" HorizontalAlignment="Left" Margin="279,364,0,0" VerticalAlignment="Top" Width="89" Click="SendEmail_button_Click" Height="29" FontSize="14">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF898989" Offset="1" />
+                    <GradientStop Color="White" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <RadioButton x:Name="Normal_radioButton" Content="Normal Message" HorizontalAlignment="Left" Margin="252,88,0,0" VerticalAlignment="Top" Checked="Normal_radioButton_Checked"/>
+        <RadioButton x:Name="Incident_radioButton" Content="Incident" HorizontalAlignment="Left" Margin="252,104,0,0" VerticalAlignment="Top" Checked="Incident_radioButton_Checked"/>
+        <StackPanel HorizontalAlignment="Left" Height="41" Margin="245,88,0,0" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="23" Margin="109,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Canvas x:Name="CanvasEnd" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" Background="Black" Opacity="0.9" Visibility="Hidden">
             <TextBlock x:Name="CanvasEnd_textBlock" Canvas.Left="49" TextWrapping="Wrap" Text="" Canvas.Top="88" Height="217" Width="681" Foreground="White" FontSize="14"/>
             <Button x:Name="EmailMessageClose_button" Content="I'm done" Canvas.Left="338" Canvas.Top="353" Width="100" Click="EmailMessageClose_button_Click" Height="27" FontSize="14">
                 <Button.Background>
@@ -39,5 +46,7 @@
             </Button>
             <Label Content="Your message has been sent" Canvas.Left="283" Canvas.Top="37" Width="223" Foreground="#FFC7C7C7" FontSize="16"/>
         </Canvas>
+        <Label Content="SMS" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="81"
+            FontSize="30 px" FontWeight="Bold" />
     </Grid>
 </Window>

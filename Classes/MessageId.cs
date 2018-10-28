@@ -36,7 +36,7 @@ namespace SEcoursework.Classes
                             break;
                         case "T":
                             TwitterWindow twitterWindow = new TwitterWindow();
-                            
+                            twitterWindow.MessageId_textBox.Text = messageIdPref + messageIdNumber.ToString();
                             twitterWindow.ShowDialog();
                             break;
                     }

@@ -41,7 +41,7 @@ namespace SEcoursework
             }
             else
             {
-                MessageBox.Show("Email address incorrect");
+                MessageBox.Show("Phone number is incorrect");
                 return;
             }
 

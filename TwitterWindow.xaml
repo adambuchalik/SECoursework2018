@@ -7,12 +7,20 @@
         mc:Ignorable="d"
         Title="TwitterWindow" Height="450" Width="800">
     <Grid>
-        <Canvas HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="792" Background="#FF53CFF6"/>
-
-        <TextBox x:Name="TwitterSender_textBox" HorizontalAlignment="Left" Height="23" Margin="158,82,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="261"/>
-        <Label Content="Sender" HorizontalAlignment="Left" Margin="106,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617"/>
-        <TextBox x:Name="TwitterMessage_textBox" HorizontalAlignment="Left" Height="156" Margin="158,115,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="261"/>
-        <Label Content="Message Text" HorizontalAlignment="Left" Margin="71,113,0,0" VerticalAlignment="Top"/>
-
+        <Image Margin="559,10,64,359" Source="napierBankLogo.png" />
+        <TextBox x:Name="TwitterSender_textBox" HorizontalAlignment="Left" Height="23" Margin="114,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261"/>
+        <Label Content="Sender" HorizontalAlignment="Left" Margin="62,168,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617"/>
+        <TextBox x:Name="TwitterMessage_textBox" HorizontalAlignment="Left" Height="156" Margin="114,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261"/>
+        <Label Content="Message" HorizontalAlignment="Left" Margin="52,199,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617"/>
+        <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="22" Margin="114,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Send tweet" HorizontalAlignment="Left" Margin="300,376,0,0" VerticalAlignment="Top" Width="75" Foreground="Black" Click="Button_Click" Height="29"
+                >
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF898989" Offset="1" />
+                    <GradientStop Color="White" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

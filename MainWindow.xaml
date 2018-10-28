@@ -22,10 +22,24 @@
 
         <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="29" Margin="277,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" ToolTip="Enter 9 digits number" FontSize="14"/>
         <Label Content="Message ID" HorizontalAlignment="Left" Margin="129,324,0,0" VerticalAlignment="Top" Height="29" Width="81" FontSize="14"/>
-        <Button x:Name="WriteMessage_btn" Content="Write Message" HorizontalAlignment="Left" Margin="369,324,0,0" VerticalAlignment="Top" Width="151" Click="WriteMessage_btn_Click" Height="29" Background="#FFD11441" Foreground="White" FontSize="14" ToolTip="Click to write message"/>
+        <Button x:Name="WriteMessage_btn" Content="Write Message" HorizontalAlignment="Left" Margin="369,324,0,0" VerticalAlignment="Top" Width="151" Click="WriteMessage_btn_Click" Height="29"  FontSize="14" ToolTip="Click to write message">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFF1B49" Offset="0.633" />
+                    <GradientStop Color="White" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
 
         <Label Content="Message Filtering Service" HorizontalAlignment="Left" Margin="252,209,0,0" VerticalAlignment="Top" FontSize="24"/>
         <Image Margin="171,76,165,263" Source="napierBankLogo.png"/>
-        <Button Content="Exit" HorizontalAlignment="Left" Margin="525,324,0,0" VerticalAlignment="Top" Width="151" Height="29" FontSize="14" Click="Button_Click"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Margin="525,324,0,0" VerticalAlignment="Top" Width="151" Height="29" FontSize="14" Click="Button_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF898989" Offset="1" />
+                    <GradientStop Color="White" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
