@@ -26,8 +26,8 @@ namespace SEcoursework.Classes
             MessageId = messageId_tbx;
             Sender = sender;
             ReplaceAbbreviation(messageText);
-          
-            
+            WriteToJsonFile(this, "sms");
+
 
         }
     }

@@ -35,7 +35,7 @@ namespace SEcoursework
             InitializeComponent(); Random rnd = new Random();
 
             int myRandomNo = rnd.Next(100000000, 999999999);
-            
+           
             MessageId_textBox.Text = myRandomNo.ToString();
 
         }

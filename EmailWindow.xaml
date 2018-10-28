@@ -37,7 +37,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Label Content="Your message has been sent" Canvas.Left="283" Canvas.Top="37" Width="223" Foreground="#FF00FF68" FontSize="16"/>
+            <Label Content="Your message has been sent" Canvas.Left="283" Canvas.Top="37" Width="223" Foreground="#FFC7C7C7" FontSize="16"/>
         </Canvas>
     </Grid>
 </Window>

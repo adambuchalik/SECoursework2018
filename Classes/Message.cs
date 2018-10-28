@@ -388,8 +388,7 @@ namespace SEcoursework.Classes
         }
 
         #endregion
-
-
+        
         #region Validate IncidentCode and IncidentType_comboBox
 
         public void ValidateIncidentTxb_cbx(bool iSincident_radioValue, string incidentCode_tbx,
@@ -435,7 +434,7 @@ namespace SEcoursework.Classes
 
         #endregion
 
-
+        #region Set Sender
         public void SetSender(string emailSender_tbx)
         {
             Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$",
@@ -451,6 +450,10 @@ namespace SEcoursework.Classes
                 return;
             }
         }
+
+        #endregion
+
+        #region Write to Json 
 
         /// <summary>
         /// Writes to json file. 
@@ -475,6 +478,9 @@ namespace SEcoursework.Classes
                     writer.Close();
             }
         }
+
+        #endregion
+
 
 
         public static T ReadFromJsonFile<T>(string filePath) where T : new()
