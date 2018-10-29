@@ -125,10 +125,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Resource Include="Images\email.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="napierBankLogo.png" />
+    <Resource Include="Images\napierBankLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\twitter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sms.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\filter.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

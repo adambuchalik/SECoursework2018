@@ -42,8 +42,6 @@ namespace SEcoursework.Classes
         }
 
 
-
-
         public List<string> AbbreviationList = new List<string>();
 
         [JsonIgnore]
@@ -56,7 +54,6 @@ namespace SEcoursework.Classes
         {
             AbbreviationList.Add(s);
         }
-
 
 
         public List<string> HashtagList = new List<string>();
@@ -102,7 +99,7 @@ namespace SEcoursework.Classes
         public void CollectHashtag(string twitterMessage_tbx)
         {
             //instantiate with this pattern 
-            Regex urlRegex = new Regex(@"(?<![^#]\w+\s+)(#\w+)",
+            Regex urlRegex = new Regex(@"#(\w*[0-9a-zA-Z]+\w*[0-9a-zA-Z])",
                 RegexOptions.IgnoreCase);
             //find items that matches with our pattern
             MatchCollection hashMatches = urlRegex.Matches(twitterMessage_tbx);
@@ -110,8 +107,8 @@ namespace SEcoursework.Classes
             foreach (Match hashMatch in hashMatches)
             {
                 AddHashtagToList(hashMatch.Value);
+//             
             }
-            
         }
 
         #endregion
@@ -385,7 +382,6 @@ namespace SEcoursework.Classes
 
             foreach (KeyValuePair<string, string> item in dict)
             {
-               
                 //instantiate with this pattern 
                 Regex urlRegex = new Regex(item.Key, RegexOptions.IgnorePatternWhitespace);
                 //find items that matches with our pattern
@@ -423,7 +419,7 @@ namespace SEcoursework.Classes
         }
 
         #endregion
-        
+
         #region Validate IncidentCode and IncidentType_comboBox
 
         public void ValidateIncidentTxb_cbx(bool iSincident_radioValue, string incidentCode_tbx,
@@ -445,7 +441,7 @@ namespace SEcoursework.Classes
         #region Create message
 
         // creates message after stripping URL. combo and incident code validated in window
-        public void CreateMessage(string MessageText, bool incident_radioValue, string incidentCode_tbx,
+        public void CreateEmailMessage(string MessageText, bool incident_radioValue, string incidentCode_tbx,
             string natureOfIncident_cbx)
         {
             if (MessageText.Length > 1028)
@@ -457,12 +453,13 @@ namespace SEcoursework.Classes
 
             if (incident_radioValue)
             {
-                this.MessageText = incidentCode_tbx + "\n" + natureOfIncident_cbx + "\n" + this.MessageText;
+                this.MessageText = MessageId + " " + Sender + " " + Subject + " " + incidentCode_tbx + " " +
+                                   natureOfIncident_cbx + " " + this.MessageText;
                 MessageBox.Show(this.MessageText);
             }
             else
             {
-                this.MessageText = this.MessageText;
+                this.MessageText = MessageId + " " + Sender + " " + Subject + " " + this.MessageText;
                 MessageBox.Show(this.MessageText);
             }
         }
@@ -470,6 +467,7 @@ namespace SEcoursework.Classes
         #endregion
 
         #region Set Sender
+
         public void SetSender(string emailSender_tbx)
         {
             Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$",
@@ -516,7 +514,7 @@ namespace SEcoursework.Classes
 
         #endregion
 
-
+        #region Read JSON
 
         public static T ReadFromJsonFile<T>(string filePath) where T : new()
         {
@@ -533,6 +531,9 @@ namespace SEcoursework.Classes
                     reader.Close();
             }
         }
+
+        #endregion
+
 
 
         public Message()

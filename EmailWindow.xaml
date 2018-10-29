@@ -7,15 +7,16 @@
         mc:Ignorable="d"
         Title="EmailWindow" Height="450" Width="800">
     <Grid>
-
-        <Image Margin="559,10,64,359" Source="napierBankLogo.png" />
+        <Canvas HorizontalAlignment="Left" Height="333" Margin="10,76,0,0" VerticalAlignment="Top" Width="738" Background="#FFF0F0F0"/>
+        <Image Margin="96,12,646,369" Source="Images/email.png" RenderTransformOrigin="-0.021,0.52" Width="40" Height="40" />
+        <Image Margin="559,10,64,359" Source="Images/napierBankLogo.png" />
         <TextBox x:Name="EmailSender_textBox"  HorizontalAlignment="Left" Height="23" Margin="107,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261"/>
         <Label Content="Sender" HorizontalAlignment="Left" Margin="55,139,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617"/>
         <TextBox x:Name="EmailSubject_textBox" HorizontalAlignment="Left" Height="23" Margin="109,172,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261"/>
         <Label Content="Subject" HorizontalAlignment="Left" Margin="55,170,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.082,0.549"/>
         <TextBox x:Name="EmailMessage_textBox" HorizontalAlignment="Left" Height="156" Margin="109,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261"/>
         <Label Content="Message Text" HorizontalAlignment="Left" Margin="22,201,0,0" VerticalAlignment="Top"/>
-        <Canvas Name="IncidentCanvas"  HorizontalAlignment="Left" Height="105" Margin="375,139,0,0" VerticalAlignment="Top" Width="353" Background="Red">
+        <Canvas x:Name="IncidentCanvas"  HorizontalAlignment="Left" Height="105" Margin="375,139,0,0" VerticalAlignment="Top" Width="353" Background="Red">
             <Label Content="Sort Code" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617" Canvas.Left="10" Canvas.Top="26" Foreground="White"/>
             <Label Content="Nature of Incident" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617" Canvas.Left="10" Canvas.Top="57" Foreground="White"/>
 
@@ -33,8 +34,8 @@
         <RadioButton x:Name="Normal_radioButton" Content="Normal Message" HorizontalAlignment="Left" Margin="252,88,0,0" VerticalAlignment="Top" Checked="Normal_radioButton_Checked"/>
         <RadioButton x:Name="Incident_radioButton" Content="Incident" HorizontalAlignment="Left" Margin="252,104,0,0" VerticalAlignment="Top" Checked="Incident_radioButton_Checked"/>
         <StackPanel HorizontalAlignment="Left" Height="41" Margin="245,88,0,0" VerticalAlignment="Top" Width="152"/>
-        <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="23" Margin="109,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Canvas x:Name="CanvasEnd" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" Background="Black" Opacity="0.9" Visibility="Hidden">
+        <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="23" Margin="109,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" BorderBrush="White"/>
+        <Canvas x:Name="CanvasEnd" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" Background="Black" Opacity="0.9">
             <TextBlock x:Name="CanvasEnd_textBlock" Canvas.Left="49" TextWrapping="Wrap" Text="" Canvas.Top="88" Height="217" Width="681" Foreground="White" FontSize="14"/>
             <Button x:Name="EmailMessageClose_button" Content="I'm done" Canvas.Left="338" Canvas.Top="353" Width="100" Click="EmailMessageClose_button_Click" Height="27" FontSize="14">
                 <Button.Background>
@@ -46,7 +47,7 @@
             </Button>
             <Label Content="Your message has been sent" Canvas.Left="283" Canvas.Top="37" Width="223" Foreground="#FFC7C7C7" FontSize="16"/>
         </Canvas>
-        <Label Content="SMS" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="81"
+        <Label Content="Email" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="111"
             FontSize="30 px" FontWeight="Bold" />
     </Grid>
 </Window>

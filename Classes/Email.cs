@@ -40,7 +40,7 @@ namespace SEcoursework.Classes
             SetEmailSubject( emailSubject_tbx, incident_radioValue);
             SetSender(emailSender_tbx);
             ReplaceUrl(emailMessage_tbx);
-            CreateMessage(MessageText, incident_radioValue, incidentCode_tbx, natureOfIncident_cbx);
+            CreateEmailMessage(MessageText, incident_radioValue, incidentCode_tbx, natureOfIncident_cbx);
             WriteToJsonFile(this, "email");
            
         }

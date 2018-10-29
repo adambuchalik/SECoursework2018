@@ -14,11 +14,14 @@ namespace SEcoursework.Classes
             
         }
 
-        public Twitter(string message_tbx, string sender)
+        public Twitter(string message_tbx, string sender, string messageID)
         :base()
         {
+            MessageId = messageID;
+            Sender = sender;
             CollectHashtag(message_tbx);
             ReplaceAbbreviation(message_tbx);
+            MessageText = MessageId + " " + Sender + " " + MessageText;
             WriteToJsonFile(this, "twitter");
         }
 
