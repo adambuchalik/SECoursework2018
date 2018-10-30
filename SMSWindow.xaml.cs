@@ -30,6 +30,7 @@ namespace SEcoursework
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // Validation: phone number
             string validatedSender = "";
             Regex emailRegex = new Regex(@"((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))$",
                 RegexOptions.IgnoreCase);
@@ -37,15 +38,14 @@ namespace SEcoursework
             if (emailMatch.Success)
             {
                 validatedSender = emailMatch.ToString();
-                Sender_tbx.Text = validatedSender;
-            }
+               }
             else
             {
                 MessageBox.Show("Phone number is incorrect");
                 return;
             }
 
-
+            // Validation: Message length
             if (SMSMessage_textBox.Text.Length > 160)
             {
                 MessageBox.Show("SMS cannot be longer than 160 characters");

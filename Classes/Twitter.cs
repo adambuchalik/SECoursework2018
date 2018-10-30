@@ -15,7 +15,7 @@ namespace SEcoursework.Classes
         }
 
         public Twitter(string message_tbx, string sender, string messageID)
-        :base()
+        : base()
         {
             MessageId = messageID;
             Sender = sender;

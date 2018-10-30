@@ -118,8 +118,6 @@ namespace SEcoursework.Classes
         // Changed MessageText property must be passed in that method
         public void ReplaceAbbreviation(string message_tbx)
         {
-            int x = 1;
-
             IDictionary<string, string> dict = new Dictionary<string, string>()
             {
                 {"AT", "<At your terminal>"},
@@ -387,11 +385,11 @@ namespace SEcoursework.Classes
                 //find items that matches with our pattern
                 MatchCollection urlMatches = urlRegex.Matches($"+{message_tbx}+");
 
-
+                // Look through matches and assign match to message control
                 foreach (Match urlMatch in urlMatches)
                 {
                     message_tbx = item.Key + " " + message_tbx.Replace(urlMatch.Value, item.Value);
-                    AddAbbreviationToList(x++ + ". " + item.Key);
+                    AddAbbreviationToList(item.Key);
                 }
             }
 
@@ -420,47 +418,25 @@ namespace SEcoursework.Classes
 
         #endregion
 
-        #region Validate IncidentCode and IncidentType_comboBox
-
-        public void ValidateIncidentTxb_cbx(bool iSincident_radioValue, string incidentCode_tbx,
-            string natureOfIncident_cbx)
-        {
-            // initial validation of incidentCode and incidentType combo
-            if (iSincident_radioValue == true)
-            {
-                if (incidentCode_tbx == "" || natureOfIncident_cbx == "")
-                {
-                    MessageBox.Show("Enter incident code and select incident type");
-                    return;
-                }
-            }
-        }
-
-        #endregion
-
         #region Create message
 
         // creates message after stripping URL. combo and incident code validated in window
         public void CreateEmailMessage(string MessageText, bool incident_radioValue, string incidentCode_tbx,
             string natureOfIncident_cbx)
         {
-            if (MessageText.Length > 1028)
-            {
-                MessageBox.Show("Message cannot be longer than 1028 characters");
-                return;
-            }
-
-
             if (incident_radioValue)
             {
+                // Adding dashes to source code
+                incidentCode_tbx = incidentCode_tbx.Insert(2, "-");
+                incidentCode_tbx = incidentCode_tbx.Insert(5, "-");
+
+
                 this.MessageText = MessageId + " " + Sender + " " + Subject + " " + incidentCode_tbx + " " +
                                    natureOfIncident_cbx + " " + this.MessageText;
-                MessageBox.Show(this.MessageText);
             }
             else
             {
                 this.MessageText = MessageId + " " + Sender + " " + Subject + " " + this.MessageText;
-                MessageBox.Show(this.MessageText);
             }
         }
 
@@ -470,18 +446,7 @@ namespace SEcoursework.Classes
 
         public void SetSender(string emailSender_tbx)
         {
-            Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$",
-                RegexOptions.IgnoreCase);
-            Match emailMatch = emailRegex.Match(emailSender_tbx);
-            if (emailMatch.Success)
-            {
-                Sender = emailMatch.ToString();
-            }
-            else
-            {
-                MessageBox.Show("Email address incorrect");
-                return;
-            }
+            Sender = emailSender_tbx;
         }
 
         #endregion
@@ -535,9 +500,9 @@ namespace SEcoursework.Classes
         #endregion
 
 
-
         public Message()
         {
+
         }
     }
 }

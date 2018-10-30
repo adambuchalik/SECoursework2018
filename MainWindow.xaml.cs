@@ -45,6 +45,7 @@ namespace SEcoursework
         {
             messageIdPrefix = MessageId_comboBox.Text;
 
+
             string messageId = MessageId.ValidateMessageId(MessageId_comboBox.Text, MessageId_textBox.Text);
             Console.WriteLine(messageId);
             

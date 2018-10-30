@@ -7,16 +7,22 @@
         mc:Ignorable="d"
         Title="TwitterWindow" Height="450" Width="800">
     <Grid>
-        <Canvas HorizontalAlignment="Left" Height="297" Margin="52,112,0,0" VerticalAlignment="Top" Width="336" Background="#FFF0F0F0"/>
+        <Canvas HorizontalAlignment="Left" Height="297" Margin="52,112,0,0" VerticalAlignment="Top" Width="336"
+                Background="#FFF0F0F0" />
         <Image Margin="114,10,619,359" Source="Images/twitter.png" />
         <Image Margin="559,10,64,359" Source="Images/napierBankLogo.png" />
-        <TextBox x:Name="TwitterSender_textBox" HorizontalAlignment="Left" Height="23" Margin="115,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261"/>
-        <Label Content="Sender" HorizontalAlignment="Left" Margin="63,156,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617"/>
-        <TextBox x:Name="TwitterMessage_textBox" HorizontalAlignment="Left" Height="156" Margin="115,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261"/>
-        <Label Content="Message" HorizontalAlignment="Left" Margin="53,187,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.359,0.617"/>
-        <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="22" Margin="115,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="White"/>
-        <Button Content="Send tweet" HorizontalAlignment="Left" Margin="272,364,0,0" VerticalAlignment="Top" Width="104" Foreground="Black" Click="Button_Click" Height="29" FontSize="14"
-                >
+        <TextBox x:Name="TwitterSender_textBox" HorizontalAlignment="Left" Height="23" Margin="115,160,0,0"
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="261" />
+        <Label Content="Sender" HorizontalAlignment="Left" Margin="63,156,0,0" VerticalAlignment="Top"
+               RenderTransformOrigin="-0.359,0.617" />
+        <TextBox x:Name="TwitterMessage_textBox" HorizontalAlignment="Left" Height="156" Margin="115,193,0,0"
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="261" />
+        <Label Content="Message" HorizontalAlignment="Left" Margin="53,187,0,0" VerticalAlignment="Top"
+               RenderTransformOrigin="-0.359,0.617" />
+        <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="22" Margin="115,128,0,0"
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="White" />
+        <Button Content="Send tweet" HorizontalAlignment="Left" Margin="272,364,0,0" VerticalAlignment="Top"
+                Width="104" Foreground="Black" Click="Button_Click" Height="29" FontSize="14">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF898989" Offset="1" />
@@ -25,16 +31,28 @@
             </Button.Background>
         </Button>
         <Label Content="Twitter" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="111"
-            FontSize="30 px" FontWeight="Bold" />
-        <Canvas Name="CanvasEnd_tweet"  HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" Background="Black" Opacity="0.9">
-            <Label Content="Hashtag list" Canvas.Left="417" Canvas.Top="26" Width="223" Foreground="#FFC7C7C7" FontSize="16"/>
-            <ListBox x:Name="HashTag_lbx" Height="130" Canvas.Left="417" Canvas.Top="62" Width="252" Background="Black" BorderBrush="Black" Foreground="White"/>
-            <ListBox x:Name="Abbreviation_lbx" Height="100" Canvas.Left="417" Canvas.Top="243" Width="252" Background="Black" BorderBrush="Black" Foreground="White"/>
-            <Label Content="Abbreviations replaced" Canvas.Left="417" Canvas.Top="207" Width="223" Foreground="#FFC7C7C7" FontSize="16"/>
-            <TextBlock x:Name="MessageText_txb" Canvas.Left="34" TextWrapping="Wrap" Canvas.Top="178" Height="165" Width="352" Foreground="White"/>
-            <Label Content="Tweet" Canvas.Left="34" Canvas.Top="142" Width="223" Foreground="#FFC7C7C7" FontSize="16"/>
-            <TextBox x:Name="Sender_txb" Height="23" Canvas.Left="34" TextWrapping="Wrap" Canvas.Top="57" Width="352" BorderBrush="Black" Foreground="White" Background="Black"/>
-            <Label Content="Sender" Canvas.Left="34" Canvas.Top="26" Width="223" Foreground="#FFC7C7C7" FontSize="16"/>
+               FontSize="30 px" FontWeight="Bold" />
+        <Canvas Name="CanvasEnd_tweet" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0"
+                VerticalAlignment="Top" Width="772" Background="Black" Opacity="0.9">
+            <Label Content="Hashtag list" Canvas.Left="417" Canvas.Top="26" Width="223" Foreground="#FFC7C7C7"
+                   FontSize="16" />
+            <ListBox x:Name="HashTag_lbx" Height="116" Canvas.Left="417" Canvas.Top="62" Width="252" Background="Black"
+                     BorderBrush="#9b9b9b" Foreground="White" />
+            <ListBox x:Name="Abbreviation_lbx" Height="124" Canvas.Left="417" Canvas.Top="219" Width="252"
+                     Background="Black" BorderBrush="#9b9b9b" Foreground="White" />
+            <Label Content="Abbreviations replaced" Canvas.Left="417" Canvas.Top="183" Width="223"
+                   Foreground="#FFC7C7C7" FontSize="16" />
+            <TextBlock x:Name="MessageText_txb" Canvas.Left="34" TextWrapping="Wrap" Canvas.Top="62" Height="281"
+                       Width="352" Foreground="White" Background="Black" />
+            <Label Content="Tweet" Canvas.Left="34" Canvas.Top="26" Width="223" Foreground="#FFC7C7C7" FontSize="16" />
+            <Button Content="Button" Canvas.Left="197" Canvas.Top="355" Width="75">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF898989" Offset="1" />
+                        <GradientStop Color="White" />
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
         </Canvas>
     </Grid>
 </Window>
