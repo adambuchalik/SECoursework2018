@@ -17,29 +17,33 @@ namespace SEcoursework.Classes
         public string SanitizedURL { get; set; }
         public string Hashtag { get; set; }
 
-        public static void ReplaceUrl(string data)
+        // Sets at the same time value for MessageTex property
+        public void ReplaceUrl(string messageTextbox)
         {
-            string dupa = data;
-
+            
             //instantiate with this pattern 
             Regex emailRegex = new Regex(@"(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})",
                 RegexOptions.IgnoreCase);
             //find items that matches with our pattern
-            MatchCollection emailMatches = emailRegex.Matches(data);
+            MatchCollection emailMatches = emailRegex.Matches(messageTextbox);
 
-            List<string> listOfEmails = new List<string>();
+            List<string> listOfURLFond = new List<string>();
 
             foreach (Match emailMatch in emailMatches)
             {
-                listOfEmails.Add(emailMatch.Value);
-                dupa = dupa.Replace(emailMatch.Value, " < URL Quarantinened>");
+                listOfURLFond.Add(emailMatch.Value);
+                messageTextbox = messageTextbox.Replace(emailMatch.Value, " < URL Quarantinened>");
             }
 
-            Console.WriteLine("nowa dupa is: " + dupa);
+            MessageText = messageTextbox;
+            Console.WriteLine("MessageText with replaced Urls is now: " + MessageText);
+            Console.WriteLine("messageTextbox with replaced Urls is now: " + MessageText);
+
+            
         }
 
-
-        public static string ReplaceAbbreviation(string messageText)
+        // Changed MessageText property must be passed in that method
+        public void ReplaceAbbreviation(string messageText)
         {
             IDictionary<string, string> dict = new Dictionary<string, string>()
             {
@@ -299,8 +303,7 @@ namespace SEcoursework.Classes
                 {"TLK2UL8R", "<Talk to you later>"},
                 {"TNSTAAFL", "<There's no such thing as a free lunch>"}
             };
-
-
+            
             foreach (KeyValuePair<string, string> item in dict)
             {
                 //instantiate with this pattern 
@@ -315,8 +318,8 @@ namespace SEcoursework.Classes
                 }
             }
 
-
-            return messageText;
+            MessageText = messageText;
+            
         }
     }
 }

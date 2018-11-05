@@ -12,14 +12,17 @@ namespace SEcoursework.Classes
         public string SortCode { get; set; }
         public string Subject { get; set; }
 
+      
 
         // array for incident type comboBox
         public static string[] noi = { "Theft", "Staff Attack", "ATM Theft", "Raid", "Customer Attack", "Staff Abuse", "Bomb Threat", "Terrorism", "Suspicious Incident", "Intelligence", "Cash Loss" };
 
+
+        
         // Getting subject
         public string GetEmailSubject(string subjectTextBox, bool incidentRadioValue)
         {
-            string Subject = "";
+            Subject = "";
 
             if (incidentRadioValue)
             {

@@ -26,20 +26,28 @@ namespace SEcoursework
         {
             InitializeComponent();
 
-//            Email email = new Email();
+            // ComboBox source
             NatureOfIncident_comboBox.ItemsSource = Email.noi;
-            string dupa = Email.noi[3];
+            string messageType = Email.noi[3];
+            MessageBox.Show("XXXXXXXXXXXXXXXXXXX" + messageType);
 
+            //Initial RadioButton status
             Normal_radioButton.IsChecked = true;
 
+            
+            
 
         }
 
         private void SendEmail_button_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("XXX Show me fucking ");
             email.Subject = email.GetEmailSubject(EmailSubject_textBox.Text, Incident_radioButton.IsChecked.Value);
-            MessageBox.Show("Subject = " + email.Subject);
+            
+            MessageBox.Show("XXX Subject = " + email.Subject);
+
+            email.ReplaceUrl(EmailMessage_textBox.Text);
+            MessageBox.Show("XXX komunikat z okna" + email.MessageText);
 
         }
 
