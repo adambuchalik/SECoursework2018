@@ -34,13 +34,11 @@
                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" BorderBrush="White" />
         <Canvas x:Name="CanvasEnd" HorizontalAlignment="Left" Height="499" Margin="10,10,0,0" VerticalAlignment="Top"
                 Width="327" Background="Black" Opacity="0.9">
-            <ListBox x:Name="Abbrieviations_listBox" Height="139" Canvas.Left="20" Canvas.Top="69" Width="268"
-                     Foreground="White" Background="Black" BorderBrush="Black" />
 
-            <TextBox x:Name="CanvasEnd_textBlock" Canvas.Left="20" TextWrapping="Wrap" Canvas.Top="263" Height="152"
+            <TextBox x:Name="CanvasEnd_textBlock" Canvas.Left="26" TextWrapping="Wrap" Canvas.Top="144" Height="152"
                      Width="268" Foreground="White" Background="Black" BorderBrush="Black" />
 
-            <Button Content="I'm done" Canvas.Left="118" Canvas.Top="454" Width="100" FontSize="14" Height="27"
+            <Button Content="I'm done" Canvas.Left="96" Canvas.Top="333" Width="100" FontSize="14" Height="27"
                     Click="Button_Click_1">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -49,9 +47,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Label Content="Following message has been sent" Canvas.Left="20" Canvas.Top="232" Foreground="#FFC7C7C7"
-                   FontSize="16" />
-            <Label Content="Replaced abbreviations:" Canvas.Left="20" Canvas.Top="33" Foreground="#FFC7C7C7"
+            <Label Content="Following message has been sent" Canvas.Left="26" Canvas.Top="113" Foreground="#FFC7C7C7"
                    FontSize="16" />
             <Canvas Height="100" Canvas.Left="47" Canvas.Top="144" Width="100">
                 <Canvas Height="100" Canvas.Left="38" Width="100" />

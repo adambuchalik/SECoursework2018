@@ -1,26 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="SEcoursework.Classes.Email" Collapsed="true">
-    <Position X="0.5" Y="2.5" Width="1.5" />
+  <Class Name="SEcoursework.Classes.Email">
+    <Position X="3.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAEAAEAAIAAAAAAAAAAAACAAAAAAAAEAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Email.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SEcoursework.EmailWindow" Collapsed="true">
-    <Position X="4" Y="1" Width="1.5" />
+  <Class Name="SEcoursework.EmailWindow">
+    <Position X="7.75" Y="3.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>QCBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>QCBAAAAAAAAAAAAgAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EmailWindow.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="SEcoursework.Classes.Message" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+  <Class Name="SEcoursework.Classes.Message">
+    <Position X="0.5" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAEBAEAAIIAAAAACAAAAACEAAgAAAAMQAA=</HashCode>
+      <HashCode>gAAAAAAIgAAEFAEBAIIAAAIAAAgAAAgEAAgAEAgMQAI=</HashCode>
       <FileName>Classes\Message.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="SEcoursework.Classes.MessageId">
+    <Position X="0.5" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Classes\MessageId.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEcoursework.Classes.Sms">
+    <Position X="3.5" Y="2.5" Width="1.75" />
+    <InheritanceLine Type="SEcoursework.Classes.Message" FixedFromPoint="true">
+      <Path>
+        <Point X="2.5" Y="3.563" />
+        <Point X="3.5" Y="3.563" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Sms.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEcoursework.Classes.Twitter">
+    <Position X="3.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Twitter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEcoursework.MainWindow">
+    <Position X="7.75" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>gABAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SEcoursework.SMSWindow">
+    <Position X="7.75" Y="6" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAFAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SMSWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SEcoursework.TwitterWindow">
+    <Position X="5.75" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAEAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TwitterWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

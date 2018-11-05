@@ -20,14 +20,14 @@ namespace SEcoursework.Classes
 
         public bool IsIncident { get; set; }
 
-        // array for incident type comboBox
+        // array holds incident type comboBox
         public static string[] natureOfIncidentArr =
         {
             "Theft", "Staff Attack", "ATM Theft", "Raid", "Customer Attack", "Staff Abuse", "Bomb Threat", "Terrorism",
             "Suspicious Incident", "Intelligence", "Cash Loss"
         };
 
-
+        // List holds found URLs
         public List<string> UrlQuarantineList = new List<string>();
 
         [JsonIgnore]
@@ -42,20 +42,9 @@ namespace SEcoursework.Classes
         }
 
 
-        public List<string> AbbreviationList = new List<string>();
+  
 
-        [JsonIgnore]
-        public IEnumerable<string> AbreviationsContent
-        {
-            get { return AbbreviationList; }
-        }
-
-        public void AddAbbreviationToList(string s)
-        {
-            AbbreviationList.Add(s);
-        }
-
-
+        // List holds found hashtags e.g. #news
         public List<string> HashtagList = new List<string>();
 
         [JsonIgnore]
@@ -69,9 +58,25 @@ namespace SEcoursework.Classes
             HashtagList.Add(s);
         }
 
-        #region ReplaceUrl + setting MessageText
 
-        // Sets at the same time value for MessageText property
+
+        // List holds Twitter mentions e.g. @donaltrump
+        public List<string> MentionList = new List<string>();
+
+        [JsonIgnore]
+        public IEnumerable<string> MentionContent
+        {
+            get { return MentionList; }
+        }
+
+        public void AddMentionToList(string s)
+        {
+            MentionList.Add(s);
+        }
+
+        #region ReplaceUrl
+
+       
         public void ReplaceUrl(string emailMessage_tbx)
         {
             //instantiate with this pattern 
@@ -80,12 +85,11 @@ namespace SEcoursework.Classes
             //find items that matches with our pattern
             MatchCollection emailMatches = urlRegex.Matches(emailMessage_tbx);
 
-//            List<string> urlQuarantineList = new List<string>();
-
+            // Iterate throug matched URLs, add to list.
             foreach (Match urlMatch in emailMatches)
             {
                 AddUrlToList(urlMatch.Value);
-                emailMessage_tbx = emailMessage_tbx.Replace(urlMatch.Value, " < URL Quarantinened>");
+                emailMessage_tbx = emailMessage_tbx.Replace(urlMatch.Value, "<URL Quarantinened>");
             }
 
             MessageText = emailMessage_tbx;
@@ -93,9 +97,9 @@ namespace SEcoursework.Classes
 
         #endregion
 
-        #region CollectHashTags + setting MessageText
+        #region CollectHashTags
 
-        // Sets at the same time value for MessageText property
+        
         public void CollectHashtag(string twitterMessage_tbx)
         {
             //instantiate with this pattern 
@@ -104,16 +108,37 @@ namespace SEcoursework.Classes
             //find items that matches with our pattern
             MatchCollection hashMatches = urlRegex.Matches(twitterMessage_tbx);
 
+            // add found hashtag to list
             foreach (Match hashMatch in hashMatches)
             {
                 AddHashtagToList(hashMatch.Value);
-//             
+        
             }
         }
 
         #endregion
 
-        #region ReplaceAbbreviations
+        #region CollectMentions 
+
+        // Sets at the same time value for MessageText property
+        public void CollectMention(string twitterMessage_tbx)
+        {
+            //instantiate with this pattern 
+            Regex mentionRegex = new Regex(@"@\w+",
+                RegexOptions.IgnoreCase);
+            //find items that matches with our pattern
+            MatchCollection mentionMatches = mentionRegex.Matches(twitterMessage_tbx);
+
+            foreach (Match mentionMatch in mentionMatches)
+            {
+                AddMentionToList(mentionMatch.Value);
+
+            }
+        }
+
+        #endregion
+
+        #region ReplaceAbbreviation
 
         // Changed MessageText property must be passed in that method
         public void ReplaceAbbreviation(string message_tbx)
@@ -377,7 +402,6 @@ namespace SEcoursework.Classes
                 {"TNSTAAFL", "<There's no such thing as a free lunch>"}
             };
 
-
             foreach (KeyValuePair<string, string> item in dict)
             {
                 //instantiate with this pattern 
@@ -385,14 +409,12 @@ namespace SEcoursework.Classes
                 //find items that matches with our pattern
                 MatchCollection urlMatches = urlRegex.Matches($"+{message_tbx}+");
 
-                // Look through matches and assign match to message control
+                // Adding full version of abbreviation in front of abbreviation
                 foreach (Match urlMatch in urlMatches)
                 {
-                    message_tbx = item.Key + " " + message_tbx.Replace(urlMatch.Value, item.Value);
-                    AddAbbreviationToList(item.Key);
+                    message_tbx = message_tbx.Insert((urlMatch.Index -1), item.Value + " ");
                 }
             }
-
             MessageText = message_tbx;
         }
 
@@ -431,8 +453,8 @@ namespace SEcoursework.Classes
                 incidentCode_tbx = incidentCode_tbx.Insert(5, "-");
 
 
-                this.MessageText = MessageId + " " + Sender + " " + Subject + " " + incidentCode_tbx + " " +
-                                   natureOfIncident_cbx + " " + this.MessageText;
+                this.MessageText = MessageId + " " + Sender + "\n" + "Sort Code: " + incidentCode_tbx + "\n" + "Nature of Incident: " +
+                                   natureOfIncident_cbx + "\n" + this.MessageText;
             }
             else
             {
@@ -454,13 +476,13 @@ namespace SEcoursework.Classes
         #region Write to Json 
 
         /// <summary>
-        /// Writes to json file. 
+        /// Writes to json file. Appends new objects. 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="objectToWrite">The object to write.</param>
         /// <param name="fileName">Name of the file. Fixed output path: <Project folder></Project>\bin\Debug</param>
         /// <param name="append">if set to <c>true</c> [append].</param>
-        public void WriteToJsonFile<T>(T objectToWrite, string fileName, bool append = false) where T : new()
+        public void WriteToJsonFile<T>(T objectToWrite, string fileName, bool append = true) where T : new()
         {
             string filePath = Directory.GetCurrentDirectory() + "\\" + fileName + ".json";
             TextWriter writer = null;
@@ -499,6 +521,7 @@ namespace SEcoursework.Classes
 
         #endregion
 
+        // Some stupid comment
 
         public Message()
         {

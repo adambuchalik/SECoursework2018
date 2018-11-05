@@ -61,11 +61,16 @@ namespace SEcoursework
 
             twitter = new Twitter(TwitterMessage_textBox.Text, TwitterSender_textBox.Text, MessageId_textBox.Text);
 
-            Abbreviation_lbx.ItemsSource = twitter.AbbreviationList;
             HashTag_lbx.ItemsSource = twitter.HashtagList;
+            Mention_lbx.ItemsSource = twitter.MentionList;
             MessageText_txb.Text = twitter.MessageText;
             // Make canvas visible on the end
             CanvasEnd_tweet.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

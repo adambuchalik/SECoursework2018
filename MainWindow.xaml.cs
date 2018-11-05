@@ -33,7 +33,7 @@ namespace SEcoursework
         public MainWindow()
         {
             InitializeComponent(); Random rnd = new Random();
-
+            // Fills MessageID number with random 9-digit int
             int myRandomNo = rnd.Next(100000000, 999999999);
            
             MessageId_textBox.Text = myRandomNo.ToString();

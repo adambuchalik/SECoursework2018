@@ -10,6 +10,7 @@ namespace SEcoursework.Classes
 {
     public class MessageId
     {
+        // Validates MessageID controls, creates appropriate windows, passess variables to appropriate window controls
         public static string ValidateMessageId(string messageIdPref, string messageId)
         {
             if (int.TryParse(messageId, out var messageIdNumber))
@@ -20,7 +21,8 @@ namespace SEcoursework.Classes
                         MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
-                {
+                {   
+                    // Create appropriate window and passes MessageId variables to screen controls
                     switch (messageIdPref)
                     {
                         case "S":

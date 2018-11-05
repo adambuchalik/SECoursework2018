@@ -20,6 +20,7 @@ namespace SEcoursework.Classes
             MessageId = messageID;
             Sender = sender;
             CollectHashtag(message_tbx);
+            CollectMention(message_tbx);
             ReplaceAbbreviation(message_tbx);
             MessageText = MessageId + " " + Sender + " " + MessageText;
             WriteToJsonFile(this, "twitter");

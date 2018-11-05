@@ -54,7 +54,6 @@ namespace SEcoursework
             {
             CanvasEnd.Visibility = Visibility.Visible;
             sms = new Sms(MessageId_textBox.Text, validatedSender, SMSMessage_textBox.Text);
-            Abbrieviations_listBox.ItemsSource = sms.AbbreviationList;
             CanvasEnd_textBlock.Text = sms.MessageText;
             }
             
