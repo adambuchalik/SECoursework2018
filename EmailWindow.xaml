@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="EmailWindow" Height="450" Width="800">
     <Grid>
-        <Canvas HorizontalAlignment="Left" Height="333" Margin="10,76,0,0" VerticalAlignment="Top" Width="738" Background="#FFF0F0F0"/>
+        <Image Source="Images/bank.jpg" Margin="-66,-35,-76,0" Grid.ColumnSpan="2"/>
+        <Canvas HorizontalAlignment="Left" Height="333" Margin="10,76,0,0" VerticalAlignment="Top" Width="738" Background="#FFF0F0F0" Opacity="0.8"/>
         <Image Margin="96,12,646,369" Source="Images/email.png" RenderTransformOrigin="-0.021,0.52" Width="40" Height="40" />
         <Image Margin="559,10,64,359" Source="Images/napierBankLogo.png" />
         <TextBox x:Name="EmailSender_textBox"  HorizontalAlignment="Left" Height="23" Margin="107,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261"/>

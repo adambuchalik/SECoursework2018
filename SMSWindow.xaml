@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="SMSWindow" Height="550" Width="365">
     <Grid>
+    <Image Source="Images/bank550.jpg" Margin="-21,-35,-12,0"/>
         <Canvas HorizontalAlignment="Left" Height="318" Margin="10,141,0,0" VerticalAlignment="Top" Width="327"
-                Background="#FFF0F0F0" />
+                Background="#FFF0F0F0" Opacity="0.9" />
 
 
         <Image Margin="25,45,266,401" Source="Images/sms.jpg" />
@@ -33,7 +34,7 @@
         <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="23" Margin="102,154,0,0"
                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" BorderBrush="White" />
         <Canvas x:Name="CanvasEnd" HorizontalAlignment="Left" Height="499" Margin="10,10,0,0" VerticalAlignment="Top"
-                Width="327" Background="Black" Opacity="0.9">
+                Width="327" Background="Black" Opacity="0.9" Visibility="Hidden">
 
             <TextBox x:Name="CanvasEnd_textBlock" Canvas.Left="26" TextWrapping="Wrap" Canvas.Top="144" Height="152"
                      Width="268" Foreground="White" Background="Black" BorderBrush="Black" />

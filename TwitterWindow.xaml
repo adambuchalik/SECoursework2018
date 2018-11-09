@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="TwitterWindow" Height="450" Width="800">
     <Grid>
+        <Image Source="Images/bank.jpg" Margin="-66,-35,-76,0" Grid.ColumnSpan="2"/>
         <Canvas HorizontalAlignment="Left" Height="297" Margin="52,112,0,0" VerticalAlignment="Top" Width="336"
-                Background="#FFF0F0F0" />
+                Background="#FFF0F0F0" Opacity="0.9" />
         <Image Margin="114,10,619,359" Source="Images/twitter.png" />
         <Image Margin="559,10,64,359" Source="Images/napierBankLogo.png" />
         <TextBox x:Name="TwitterSender_textBox" HorizontalAlignment="Left" Height="23" Margin="115,160,0,0"
@@ -33,7 +34,7 @@
         <Label Content="Twitter" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="111"
                FontSize="30 px" FontWeight="Bold" />
         <Canvas Name="CanvasEnd_tweet" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0"
-                VerticalAlignment="Top" Width="772" Background="Black" Opacity="0.9">
+                VerticalAlignment="Top" Width="772" Background="Black" Opacity="0.9" Visibility="Hidden">
             <Label Content="Hashtag List" Canvas.Left="417" Canvas.Top="26" Width="223" Foreground="#FFC7C7C7"
                    FontSize="16" />
             <ListBox x:Name="HashTag_lbx" Height="116" Canvas.Left="417" Canvas.Top="62" Width="252" Background="Black"

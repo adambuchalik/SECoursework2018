@@ -31,7 +31,7 @@ namespace SEcoursework.Classes
         public List<string> UrlQuarantineList = new List<string>();
 
         [JsonIgnore]
-        public IEnumerable<string> UrlsContent
+        public IEnumerable<string> UrlContent
         {
             get { return UrlQuarantineList; }
         }
@@ -423,10 +423,10 @@ namespace SEcoursework.Classes
         #region SetEmailSubject
 
         // Set subject
-        public void SetEmailSubject(string emailSubject_tbx, bool incident_radioValue)
+        public void SetEmailSubject(string emailSubject_tbx, bool incidentRadioValue)
         {
             // Validate subject
-            if (incident_radioValue)
+            if (incidentRadioValue)
             {
                 Subject = $"SIR {DateTime.Today.ToString("dd/MM/yy")}";
                 IsIncident = true;
@@ -443,10 +443,10 @@ namespace SEcoursework.Classes
         #region Create message
 
         // creates message after stripping URL. combo and incident code validated in window
-        public void CreateEmailMessage(string MessageText, bool incident_radioValue, string incidentCode_tbx,
+        public void CreateEmailMessage(string MessageText, bool incidentRadioValue, string incidentCode_tbx,
             string natureOfIncident_cbx)
         {
-            if (incident_radioValue)
+            if (incidentRadioValue)
             {
                 // Adding dashes to source code
                 incidentCode_tbx = incidentCode_tbx.Insert(2, "-");
@@ -521,7 +521,6 @@ namespace SEcoursework.Classes
 
         #endregion
 
-        // Some stupid comment
 
         public Message()
         {

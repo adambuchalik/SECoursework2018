@@ -5,12 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SEcoursework"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="792.321">
     <Grid ToolTip="Select Message ID">
-        <Image Margin="196,191,500,167" Source="Images/filter.png"/>
-        <Label Content="Message Filtering Service" HorizontalAlignment="Left" Margin="267,205,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Width="300" Foreground="#FF787878"/>
-        <Image Margin="171,76,165,263" Source="Images/napierBankLogo.png"/>
-        <Canvas HorizontalAlignment="Left" Height="73" Margin="116,299,0,0" VerticalAlignment="Top" Width="581" Background="#FFF0F0F0"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Source="Images/bank.jpg" Margin="-66,-35,-76,0" Grid.ColumnSpan="2"/>
+        <Image Margin="196,191,104.085,167" Source="Images/filter.png"/>
+        <Label Content="Message Filtering Service" HorizontalAlignment="Left" Margin="267,205,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Width="300" Foreground="#FF787878" Grid.ColumnSpan="2"/>
+        <Image Margin="167,47,169,292" Source="Images/napierBankLogo.png" Grid.ColumnSpan="2"/>
+        <Canvas HorizontalAlignment="Left" Height="73" Margin="116,299,0,0" VerticalAlignment="Top" Width="581" Background="#FFF0F0F0" Grid.ColumnSpan="2" Opacity="0.9"/>
         <ComboBox  x:Name="MessageId_comboBox"
                    HorizontalAlignment="Left" 
                    Margin="219,324,0,0" 
@@ -25,7 +30,7 @@
         </ComboBox>
         <TextBox x:Name="MessageId_textBox" HorizontalAlignment="Left" Height="29" Margin="277,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" ToolTip="Enter 9 digits number" FontSize="14"/>
         <Label Content="Message ID" HorizontalAlignment="Left" Margin="129,324,0,0" VerticalAlignment="Top" Height="29" Width="81" FontSize="14"/>
-        <Button x:Name="WriteMessage_btn" Content="Write Message" HorizontalAlignment="Left" Margin="369,324,0,0" VerticalAlignment="Top" Width="151" Click="WriteMessage_btn_Click" Height="29"  FontSize="14" ToolTip="Click to write message" Foreground="White">
+        <Button x:Name="WriteMessage_btn" Content="Write Message" HorizontalAlignment="Left" Margin="369,324,0,0" VerticalAlignment="Top" Width="151" Click="WriteMessage_btn_Click" Height="29"  FontSize="14" ToolTip="Click to write message" Foreground="White" Grid.ColumnSpan="2">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#C41C38" Offset="0.633" />
@@ -33,7 +38,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button Content="Exit" HorizontalAlignment="Left" Margin="525,324,0,0" VerticalAlignment="Top" Width="151" Height="29" FontSize="14" Click="Button_Click">
+        <Button Content="Exit" HorizontalAlignment="Left" Margin="128.915,324,0,0" VerticalAlignment="Top" Width="151" Height="29" FontSize="14" Click="Button_Click" Grid.Column="1">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF898989" Offset="1" />
